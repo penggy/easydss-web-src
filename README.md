@@ -4,6 +4,10 @@
 
 npm i
 
+## build dll 
+
+npm run dll
+
 ## run 
 
 npm run start
