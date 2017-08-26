@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 require("babel-polyfill");
@@ -67,6 +68,13 @@ module.exports = {
             "window.jQuery": 'jquery',
             "window.$": 'jquery'
         }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./dll/vendor-manifest.json')
+        }),
+        new CopyWebpackPlugin([
+            { from: 'dll', ignore: ['template.html', 'vendor-manifest.json'] }
+        ]),
         //编译前先清除 dist 发布目录
         new CleanWebpackPlugin(['dist']),
         //生成视频广场首页, 在这个页面中自动引用入口 index --> dist/js/index.[chunkhash:8].js
@@ -76,7 +84,7 @@ module.exports = {
             title: '视频广场',
             inject: true, // head -> Cannot find element: #app
             chunks: ['index'],
-            template: './src/index.html',
+            template: './dll/template.html',
             minify: {
                 removeComments: true,
                 collapseWhitespace: false
@@ -89,7 +97,7 @@ module.exports = {
             title: '版本信息',
             inject: true,
             chunks: ['about'],
-            template: './src/index.html',
+            template: './dll/template.html',
             minify: {
                 removeComments: true,
                 collapseWhitespace: false

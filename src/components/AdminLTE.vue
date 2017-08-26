@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import "font-awesome/css/font-awesome.min.css";
-import "admin-lte/bootstrap/css/bootstrap.min.css";
-import "admin-lte/dist/css/AdminLTE.min.css";
+import "font-awesome/css/font-awesome.css";
+import "admin-lte/bootstrap/css/bootstrap.css";
+import "admin-lte/dist/css/AdminLTE.css";
 import "admin-lte/dist/css/skins/_all-skins.css";
 
-import "admin-lte/bootstrap/js/bootstrap.min.js";
+import "admin-lte/bootstrap/js/bootstrap.js";
 import "admin-lte/dist/js/app.js";
 
 import { mapState } from "vuex"
