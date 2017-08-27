@@ -13,6 +13,10 @@ const store = new Vuex.Store({
                 icon: "mouse-pointer",
                 text: "视频广场"
             }, {
+                path: "/player.html",
+                icon: "play",
+                text: "HLS 播放器"
+            }, {
                 path: "/about.html",
                 icon: "support",
                 text: "版本信息"

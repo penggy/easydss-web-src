@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -53,6 +54,9 @@ module.exports = {
             "window.$": 'jquery'
         }),
         new CleanWebpackPlugin(['dll']),
+        new CopyWebpackPlugin([
+            { from: 'src/externals' }
+        ]),
         new webpack.DllPlugin({
             path: resolve("dll/[name]-manifest.json"),
             name: "[name]_library",

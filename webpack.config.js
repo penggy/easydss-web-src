@@ -13,11 +13,16 @@ module.exports = {
     //定义页面的入口, 因为js中将要使用es6语法, 所以这里需要依赖 babel 垫片
     entry: {
         index: ['babel-polyfill', './src/index.js'],
+        player: ['babel-polyfill', './src/player.js'],
         about: ['babel-polyfill', './src/about.js']
     },
     output: {
         path: resolve('dist'), // 指示发布目录
         filename: 'js/[name].[chunkhash:8].js' //指示生成的页面入口js文件的目录和文件名, 中间包含8位的hash值
+    },
+    externals: {
+        //video.js 作为外部资源引入
+        'video.js': 'videojs'
     },
     //下面给一些常用组件和目录取别名, 方便在js中 import
     resolve: {
@@ -84,6 +89,17 @@ module.exports = {
             title: '视频广场',
             inject: true, // head -> Cannot find element: #app
             chunks: ['index'],
+            template: './dll/template.html',
+            minify: {
+                removeComments: true,
+                collapseWhitespace: false
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'player.html',
+            title: 'HLS 播放器',
+            inject: true,
+            chunks: ['player'],
             template: './dll/template.html',
             minify: {
                 removeComments: true,
