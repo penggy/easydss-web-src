@@ -4,31 +4,38 @@
     <Sider :menus="menus"></Sider>
     <div class="content-wrapper">
       <section class="content">
-        <slot></slot>
+        <transition>
+          <router-view @btnClick="btnClick"></router-view>
+        </transition>
       </section>
     </div>
   </div>
 </template>
 
 <script>
-import "font-awesome/css/font-awesome.css";
-import "admin-lte/bootstrap/css/bootstrap.css";
-import "admin-lte/dist/css/AdminLTE.css";
-import "admin-lte/dist/css/skins/_all-skins.css";
+import "font-awesome/css/font-awesome.css"
+import "admin-lte/bootstrap/css/bootstrap.css"  
+import "admin-lte/dist/css/AdminLTE.css"
+import "admin-lte/dist/css/skins/_all-skins.css"
 
-import "admin-lte/bootstrap/js/bootstrap.js";
-import "admin-lte/dist/js/app.js";
+import "admin-lte/bootstrap/js/bootstrap.js"
+import "admin-lte/dist/js/app.js"
 
 import { mapState } from "vuex"
 import Vue from 'vue'
 
-import Sider from './Sider'
-import NaviBar from './NaviBar'
+import Sider from 'components/Sider'
+import NaviBar from 'components/NaviBar'
 
 export default {
   data() {
     return {
     }
+  },
+  mounted() {
+    $(() => {
+      $.AdminLTE.layout.fix();
+    })
   },
   components: {
     NaviBar, Sider
@@ -41,6 +48,11 @@ export default {
       "logoMiniText",
       "menus"
     ])
-  }
+  },
+  methods: {
+    btnClick(msg){
+      alert(msg);
+    }
+  }  
 }
 </script>

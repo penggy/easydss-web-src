@@ -9,28 +9,19 @@ const store = new Vuex.Store({
         logoMiniText: "DSS",
         menus: [
             {
-                path: "/index.html",
+                path: "/",
                 icon: "mouse-pointer",
                 text: "视频广场"
             }, {
-                path: "/player.html",
+                path: "/player",
                 icon: "play",
                 text: "HLS 播放器"
             }, {
-                path: "/about.html",
+                path: "/about",
                 icon: "support",
                 text: "版本信息"
             }
         ]
-    },
-    getters : {
-
-    },
-    mutations: {
-
-    },
-    actions : {
-        
     }
 })
 

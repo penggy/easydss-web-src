@@ -1,16 +1,13 @@
 import Vue from 'vue'
-import store from "./store";
-import AdminLTE from './components/AdminLTE'
-import Index from './components/Index'
+import store from 'src/store'
+import router from 'src/router'
 
 new Vue({
   el: '#app',
   store,
+  router,
   template: `
-  <AdminLTE>
-    <Index></Index>
-  </AdminLTE>`,
-  components: {
-    AdminLTE, Index
-  },
+  <transition>
+    <router-view></router-view>
+  </transition>`
 })

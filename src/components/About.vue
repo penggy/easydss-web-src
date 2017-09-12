@@ -1,17 +1,11 @@
 <template>
     <div class="container-fluid no-padding">
-       <button class="btn btn-success" @click.prevent="btnClick">{{btnText}}</button>
+       <button class="btn btn-success" @click.prevent="btnClick">点我向父组件传递信息</button>
     </div>
 </template>
 
 <script>
 export default {
-  props: {
-      btnText : {
-          type : String,
-          default : ""
-      }
-  },
   methods: {
       btnClick(){
           this.$emit("btnClick", "hello");

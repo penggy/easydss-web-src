@@ -17,9 +17,7 @@
 <script>
 import Vue from 'vue'
 import { Table, TableColumn, Pagination } from 'element-ui'
-Vue.use(Table);
-Vue.use(TableColumn);
-Vue.use(Pagination);
+Vue.use(Table).use(TableColumn).use(Pagination);
 
 export default {
     data() {
